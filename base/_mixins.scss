@@ -1,0 +1,34 @@
+//****************************************************
+// MIXINS
+// ****************************************************
+
+// Set text antialiasing for clearer text
+@mixin antialiasing( $type:antialiased ) {
+  /* antialiased, none, subpixel-antialiased*/
+	-webkit-font-smoothing: $type;
+	font-smoothing: $type;
+	font-smooth: always;
+}
+
+// Keep the footer sticky to the bottom of the page
+@mixin sticky-footer($footer-height, $wrapper-selector: unquote("#wrapper"), $container-selector: unquote("#container"), $footer-selector: unquote("#footer")) {
+  html, body {
+    height: 100%;
+  }
+  body {
+  	margin: 0px;
+  	padding: 0px;
+  }
+  #{$wrapper-selector} {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin-bottom: -$footer-height;
+    #{$container-selector} {
+      padding-bottom: $footer-height;
+    }
+  }
+  #{$footer-selector} {
+    height: $footer-height;
+  }
+}
